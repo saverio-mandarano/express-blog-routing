@@ -1,11 +1,19 @@
 // import Express
 const express = require("express");
+
 // creo variabile router il cui valore sarà un'istanza di express.Router()
 const router = express.Router();
 
+// import array dati dal file
+const postsList = require("../data/posts");
+
 // index: lista dei post
 router.get("/", function (req, res) {
-  res.send("Lista dei post");
+  //   res.send("Lista dei post");
+  res.json({
+    total: postsList.length,
+    posts: postsList,
+  });
 });
 // show: dettagli post
 router.get("/:id", function (req, res) {
