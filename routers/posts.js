@@ -15,10 +15,17 @@ router.get("/", function (req, res) {
     posts: postsList,
   });
 });
+
 // show: dettagli post
 router.get("/:id", function (req, res) {
-  res.send("Dettagli del post con id: " + req.params.id);
+  const post = postsList.find((post) => post.id === parseInt(req.params.id));
+  if (post) {
+    res.json(post);
+  } else {
+    res.send("Dettagli del post con id: " + req.params.id);
+  }
 });
+
 // store: creazione nuovo post
 router.post("/", function (req, res) {
   res.send("Creazione nuovo post");
