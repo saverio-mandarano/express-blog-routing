@@ -16,7 +16,7 @@ router.get("/", function (req, res) {
   });
 });
 
-// show: dettagli post
+// show: dettagli singolo post
 router.get("/:id", function (req, res) {
   const post = postsList.find((post) => post.id === parseInt(req.params.id));
   if (post) {
